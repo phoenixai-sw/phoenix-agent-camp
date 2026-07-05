@@ -1,0 +1,19 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phoenix Agent v2.0 Agent Web 활용설명서</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0;background:#f6f7fb;color:#172033;line-height:1.65}main{max-width:1120px;margin:0 auto;padding:40px 22px 64px}h1{font-size:34px;margin:0 0 10px}h2{font-size:22px;margin-top:34px;border-left:6px solid #2563eb;padding-left:12px}.hero{background:#13213d;color:white;padding:34px;border-radius:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.card{background:white;border:1px solid #dfe5f2;border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(17,24,39,.06)}code,pre{background:#101827;color:#f8fafc;border-radius:10px}pre{padding:16px;overflow:auto}.tag{display:inline-block;background:#e8f0ff;color:#1d4ed8;border-radius:999px;padding:3px 10px;font-weight:700;font-size:13px}.warn{background:#fff7ed;border-color:#fed7aa}.ok{background:#eefbf3;border-color:#bbf7d0}table{width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden}th,td{border:1px solid #dfe5f2;padding:12px;text-align:left;vertical-align:top}th{background:#edf2ff}</style>
+</head>
+<body><main>
+<section class="hero"><p class="tag">Phoenix Agent v2.0</p><h1>Agent Web Control Guide</h1><p>v2.0은 v1.9 안정 봇에 Playwright MCP 기반 agent web 컨트롤 능력을 추가한 버전입니다. 봇은 웹을 조작하고, 결과물은 기본적으로 로컬 outputs에 저장하며, Telegram 전송은 유저 확인 후 진행합니다.</p></section>
+<h2>1. v2.0 핵심 흐름</h2><pre>마스터 → Genesis Bot → phoenix command → 전문 봇 → agent web → 결과 생성 → outputs 저장 → Telegram 선택 전송</pre>
+<h2>2. 봇별 담당 agent web</h2><table><tr><th>봇</th><th>담당 웹</th><th>역할</th></tr><tr><td>Genesis Bot</td><td>phoenix command</td><td>작업 분해, 지휘, 상태 추적, 최종 보고</td></tr><tr><td>Design Bot</td><td>phoenix pages / slides / webs / images</td><td>상세페이지, PPT, 랜딩페이지, 이미지 생성</td></tr><tr><td>Writer Bot</td><td>phoenix books</td><td>강의교안, SNS 카피, 원고, DOCX/PDF</td></tr><tr><td>Video Bot</td><td>phoenix videos</td><td>스토리보드, 영상 생성 상태, MP4 결과</td></tr><tr><td>Power Bot</td><td>phoenix reports / tax / dental / marketing</td><td>보고서, 일반 정보 상담, AI 검색/마케팅 대시보드</td></tr></table>
+<h2>3. Playwright MCP 기준</h2><div class="card"><p>Playwright MCP는 에이전트가 agent web을 열고 조작하고 검증하는 기본 연결 방식입니다. 실제 안정성은 각 웹의 <b>data-testid</b>, 다운로드 안정성, 상태 API, 실패 처리에 달려 있습니다.</p></div>
+<h2>4. 결과물 저장과 전송</h2><div class="card ok"><p>기본 저장 위치는 로컬 <b>outputs</b>입니다. 작업이 끝나면 봇은 아래처럼 물어봅니다.</p><pre>결과물은 로컬 outputs 폴더에 저장했습니다.
+텔레그램으로도 결과물을 보실래요?</pre></div>
+<h2>5. 승인 필요 작업</h2><div class="card warn"><p>영상 생성, 유료 크레딧 사용, 외부 배포, 세무/치과 상담 결과 전달, 프로젝트 삭제, 여러 agent web 동시 실행은 반드시 마스터 승인 후 진행합니다.</p></div>
+<h2>6. 후속 로드맵</h2><div class="grid"><div class="card"><h3>v2.0 Web Control Agent</h3><p>봇이 웹을 조작하고 결과물을 만듭니다.</p></div><div class="card"><h3>v2.2 Master Builder Agent</h3><p>봇이 작업 경험을 스킬 개선안으로 정리하고, 마스터 승인 후 updater로 반영합니다.</p></div></div>
+</main></body></html>
